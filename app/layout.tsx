@@ -1,3 +1,9 @@
+/**
+ * Component for rendering the root layout of the application.
+ * Uses ClerkProvider to handle user authentication and display appropriate buttons based on user's authentication status.
+ * Applies custom fonts and global styles using Inter and Space_Grotesk fonts.
+ * Renders children components within the layout.
+ */
 import {
   ClerkProvider,
   SignInButton,
@@ -9,6 +15,7 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
 import { Metadata } from "next";
+import { ThemeProvider } from "@/context/ThemeProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -46,14 +53,7 @@ export default function RootLayout({
     >
       <html lang="en">
         <body className={`${inter.variable}${spaceGrotesk.variable}`}>
-          <SignedOut>
-            <SignInButton />
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
-          <img src={"./new.svg"} alt="" />
-          {children}
+          <ThemeProvider>{children}</ThemeProvider>
         </body>
       </html>
     </ClerkProvider>
