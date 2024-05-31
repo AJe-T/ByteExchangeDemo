@@ -1,9 +1,12 @@
-import React from 'react'
+import { UserButton } from "@clerk/nextjs";
+import React from "react";
 
-const Home:React.FC = () => {
+const Home: React.FC = () => {
   return (
-    <div>Home page</div>
-  )
-}
+    <div>
+      <UserButton afterSignOutUrl="/" />   
+    </div>
+  );
+};
 
-export default Home
+export default Home;
